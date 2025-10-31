@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Construct</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="make_order.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <div id="toast-container"></div>
+  <body>
+    <div id="header-placeholder"></div>
+    <main>
+      <section class="combo-section">
+        <h2>Доступные для заказа комбо</h2>
+        <div class="combo-grid">
+          <!-- Вариант 1 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="main-course">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="salad">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 2 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="main-course">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 3 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="salad">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 4 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="main-course">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="salad">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 5 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="main-course">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 6: только десерт -->
+          <div class="combo-variant dessert-only">
+            <div class="combo-item" data-jump="dessert">
+              <img src="img/icons/desserts.png" alt="Десерт" />
+              <span>Десерт</span>
+              <span class="combo-note">(Можно добавить к любому заказу)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Выберите суп</h2>
+        <div class="filters" data-category="soup">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбный
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясной
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианский
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите главное блюдо</h2>
+        <div class="filters" data-category="main-course">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбное
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясное
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианское
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите салат или стартер</h2>
+        <div class="filters" data-category="salad">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбный
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясной
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианский
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите напиток</h2>
+        <div class="filters" data-category="drink">
+          <button type="button" class="filter-btn" data-kind="cold">
+            холодный
+          </button>
+          <button type="button" class="filter-btn" data-kind="hot">
+            горячий
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите десерт</h2>
+        <div class="filters" data-category="dessert">
+          <button type="button" class="filter-btn" data-kind="small">
+            маленькая порция
+          </button>
+          <button type="button" class="filter-btn" data-kind="medium">
+            средняя порция
+          </button>
+          <button type="button" class="filter-btn" data-kind="large">
+            большая порция
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+
+      <div
+        id="order-panel"
+        class="sticky-cost"
+      >
+        <div id="order-total-text">Стоимость заказа: 0₽</div>
+        <button
+          id="go-to-order"
+         
+          >Перейти к оформлению &rarr;</button
+        >
+      </div>
+    </main>
+    <footer id="our_contacts">
+      <p>Позвонить нам <a href="">+7-000-000-00-00</a></p>
+    </footer>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <script src="burger-menu.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

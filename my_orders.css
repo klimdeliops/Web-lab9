@@ -1,0 +1,448 @@
+/* ---------- База/тема ---------- */
+:root {
+  --card: #ffffff;
+  --muted: #666;
+  --line: #e6e6e6;
+  --radius: 12px;
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  min-height: 100%;
+  background-color: #f5f5f5;
+}
+
+/* ---------- Главный блок (main) ---------- */
+.page {
+  min-height: calc(100vh - 130px);
+  padding: 80px 16px 15px;
+  display: grid;
+  place-items: start center;
+}
+
+.page__card {
+  width: min(1200px, 100%);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+
+}
+
+.page__title {
+  
+  margin: 0 0 20px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* ---------- Таблица заказов ---------- */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 14px 16px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) {
+  width: 38px;
+  min-width: 32px;
+  max-width: 44px;
+}
+
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) {
+  width: 38%;
+  min-width: 210px;
+}
+
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) {
+  width: 17%;
+}
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) {
+  width: 11%;
+}
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) {
+  width: 15%;
+}
+.orders-table th:nth-child(6),
+.orders-table td:nth-child(6) {
+  width: 13%;
+}
+
+.orders-table thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  background: #fafafa;
+}
+
+.orders-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.orders-table__actions {
+  width: 140px;
+  white-space: nowrap;
+}
+
+/* Иконки-действия (вместо кнопок) */
+.icon-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  line-height: 1;
+  padding: 6px 8px;
+  margin-right: 6px;
+  color: #444;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.icon-btn:hover {
+  background: rgba(255, 124, 1, 0.149);
+}
+.icon-btn:focus-visible {
+  outline: 2px solid #94b7ff;
+  outline-offset: 2px;
+}
+.icon-btn--danger {
+  color: var(--danger);
+}
+
+/* ---------- Модальные окна ---------- */
+/* контейнер модалки */
+.modal[hidden] {
+  display: none;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+/* затемнение */
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+/* диалог */
+.modal__dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100dvh - 64px);
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* заголовок */
+.modal__title {
+  margin: 0;
+  padding: 20px 24px 14px;
+  font-size: 22px;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--line);
+}
+
+/* крестик */
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #ff7c01;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal__close:hover {
+  background: rgba(255, 124, 1, 0.149);
+}
+.modal__close:focus-visible {
+  outline: 2px solid rgba(255, 124, 1, 0.149);
+  outline-offset: 2px;
+}
+
+/* содержимое */
+.modal__content {
+  padding: 16px 24px;
+  overflow: auto;
+}
+
+/* низ модалки (кнопки) */
+.modal__footer {
+  margin-top: auto;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  background: #fbfbfb;
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+  font: inherit;
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-primary {
+  background: #fff;
+  border-color: #33ba56;
+  color: #33ba56;
+}
+.btn-primary:hover {
+  background: linear-gradient(to right, #33ba56, #46cf6b);
+  color: #fff;
+}
+
+.btn-danger {
+  background: #fff;
+  border-color: #f21d1d;
+  color: #f21d1d;
+}
+.btn-danger:hover {
+  background: linear-gradient(to right, #f21d1d, #ff5050);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #ff7c01;
+  border-color: #ff7c01;
+}
+.btn-secondary:hover {
+  color: #fff;
+  background: linear-gradient(to right, #ff7c01, #ffa600);
+}
+
+/* ---------- Просмотр: пары ключ–значение ---------- */
+.kv {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.kv__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+}
+.kv__key {
+  color: var(--muted);
+}
+.kv__val {
+  color: var(--text);
+}
+.section-title {
+  margin: 14px 0 8px;
+  font-size: 18px;
+}
+.list {
+  margin: 0 0 12px 0;
+  padding-left: 18px;
+}
+.total {
+  margin: 0;
+  font-size: 16px;
+}
+.total span {
+  color: var(--muted);
+}
+
+/* ---------- Форма редактирования ---------- */
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.form__label {
+  align-self: end;
+  color: var(--muted);
+}
+.form__control {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfd4d9;
+  background: #fff;
+  color: var(--text);
+}
+.form__control:focus {
+  outline: 2px solid #94b7ff;
+  border-color: #94b7ff;
+}
+.form__control--textarea {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Уведомления (toasts) ---------- */
+.toasts {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 10px;
+  z-index: 2000;
+}
+.toast {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  color: #fff;
+  font-weight: 500;
+}
+.toast.show {
+  display: block;
+}
+.toast--success {
+  background: var(--primary);
+}
+.toast--error {
+  background: var(--danger);
+}
+
+footer {
+  display: flex;
+  padding-left: 30px;
+  align-items: center;
+  height: 130px;
+  color: #fff;
+  background-color: #000;
+  width: 100%;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* базовые стили из вашего CSS оставляем без изменений */
+
+/* Адаптив для экранов шириной менее 800px */
+@media (max-width: 800px) {
+  .table-wrap {
+    overflow-x: visible; /* убрать горизонтальный скролл */
+  }
+
+  .orders-table {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* Скрываем заголовок таблицы */
+  .orders-table thead {
+    display: none;
+  }
+
+  /* tbody в блок */
+  .orders-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Каждая строка — блок карточка */
+  .orders-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    background: var(--card);
+  }
+
+  /* Каждая ячейка — блок с заголовком слева и значением справа */
+  .orders-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .orders-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Псевдоэлементы — заголовки */
+  .orders-table tbody td:nth-child(1)::before { content: "№"; }
+  .orders-table tbody td:nth-child(2)::before { content: "Дата оформления"; }
+  .orders-table tbody td:nth-child(3)::before { content: "Состав заказа"; }
+  .orders-table tbody td:nth-child(4)::before { content: "Стоимость"; }
+  .orders-table tbody td:nth-child(5)::before { content: "Время доставки"; }
+  .orders-table tbody td:nth-child(6)::before { content: "Действия"; }
+
+  .orders-table tbody td::before {
+    font-weight: 600;
+    color: var(--muted);
+    flex-basis: 130px;
+    text-align: left;
+  }
+
+  /* Стилизуем кнопки действий */
+  .orders-table__actions {
+    padding-top: 12px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .icon-btn {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  /* Убираем фиксированные ширины колонок */
+  .orders-table th,
+  .orders-table td {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+}

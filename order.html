@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Construct</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="make_order.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <div id="toast-container"></div>
+  <body>
+    <div id="header-placeholder"></div>
+    <main>
+      <section>
+        <h2>Состав заказа</h2>
+        <div id="current-order-list" class="order-list"></div>
+        <div id="empty-order-text" style="display: none">
+          Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу
+          <a href="make_order.html">Собрать ланч</a>.
+        </div>
+      </section>
+      <section id="order-section">
+        <h2>Оформление заказа</h2>
+        <section id="section">
+          <form id="orderForm" class="container">
+            <!-- Страница 1: Ваш заказ -->
+            <div class="loginform">
+              <h2>Ваш заказ</h2>
+              <div class="inputs">
+                <label for="soup">Суп</label>
+                <div class="dish-display" id="soup" data-category="soup">
+                  <span class="dish-name">Не выбрано</span>
+                </div>
+                <label for="main-course">Главное блюдо</label>
+                <div
+                  class="dish-display"
+                  id="main-course"
+                  data-category="main-course"
+                >
+                  <span class="dish-name">Не выбрано</span>
+                </div>
+                <label for="salad">Салат или стартер</label>
+                <div class="dish-display" id="salad" data-category="salad">
+                  <span class="dish-name">Не выбрано</span>
+                </div>
+                <label for="drink">Напиток</label>
+                <div class="dish-display" id="drink" data-category="drink">
+                  <span class="dish-name">Не выбрано</span>
+                </div>
+                <label for="dessert">Десерт</label>
+                <div class="dish-display" id="dessert" data-category="dessert">
+                  <span class="dish-name">Не выбрано</span>
+                </div>
+                <label for="comment">Комментарии к заказу</label>
+                <textarea
+                  id="comment"
+                  name="comment"
+                  rows="4"
+                  placeholder="Напишите ваш комментарий здесь..."
+                  maxlength="500"
+                ></textarea>
+                <div
+                  id="total-cost"
+                  
+                >
+                  Итого: 0₽
+                </div>
+              </div>
+              <button type="button" id="nextToData" class="btn-next">
+                Далее
+              </button>
+            </div>
+
+            <!-- Страница 2: Ваши данные -->
+            <div class="signupform">
+              <h2>Ваши данные</h2>
+              <div class="inputs">
+                <label for="name">ФИО</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Иванов Иван Иванович"
+                  required
+                />
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email адрес"
+                  required
+                />
+                <label class="checkbox-label">
+                  <input type="checkbox" id="marketing" name="marketing" />
+                  Получать информацию о скидках и акциях
+                </label>
+                <label for="phone">Номер телефона</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  maxlength="16"
+                  placeholder="8-___-___-__-__"
+                  required
+                  oninput="formatPhone(this)"
+                />
+              </div>
+              <div class="navigation">
+                <button type="button" id="backToOrder" class="btn-back">
+                  Назад
+                </button>
+                <button type="button" id="nextToDelivery" class="btn-next">
+                  Далее
+                </button>
+              </div>
+            </div>
+
+            <!-- Страница 3: Доставка -->
+            <div class="deliveryform">
+              <div class="header-with-clear">
+                <h2>Детали доставки</h2>
+                <button
+                  type="reset"
+                  class="clear-btn"
+                  title="Очистить все формы"
+                >
+                  <img
+                    src="./img/free-icon-delete-216658.png"
+                    alt=""
+                    width="30px"
+                  />
+                </button>
+              </div>
+              <div class="inputs">
+                <div class="delivery-address">
+                  <label for="address">Адрес доставки</label><br /><br />
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Улица, дом, квартира"
+                    required
+                  />
+                </div>
+
+                <p class="delivery-info">
+                  Доставка осуществляется только по Москве
+                </p>
+
+                <div class="time-option">
+                  <label class="radio-label">
+                    <input
+                      type="radio"
+                      name="deliveryTime"
+                      value="asap"
+                      checked
+                    />
+                    <span class="radio-custom"></span>
+                    Как можно скорее
+                  </label>
+                </div>
+
+                <div class="time-option">
+                  <label class="radio-label">
+                    <input type="radio" name="deliveryTime" value="scheduled" />
+                    <span class="radio-custom"></span>
+                    К указанному времени
+                  </label>
+                </div>
+
+                <div
+                  class="scheduled-time"
+                  id="scheduledTime"
+                  style="display: none"
+                >
+                  <label for="deliveryTime">Укажите время доставки</label>
+                  <input
+                    type="time"
+                    id="deliveryTime"
+                    name="deliveryTimeValue"
+                    min="07:00"
+                    max="23:00"
+                    step="600"
+                  />
+                </div>
+
+                <div class="delivery-note">
+                  <p>
+                    <strong>Доступное время доставки с 7:00 до 23:00</strong>
+                  </p>
+                </div>
+              </div>
+              <div class="navigation">
+                <button type="button" id="backToData" class="btn-back">
+                  Назад
+                </button>
+                <button type="submit" id="submitOrder" class="btn-next">
+                  Оформить заказ
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>Позвонить нам <a href="">+7-000-000-00-00</a></p>
+    </footer>
+    <script src="burger-menu.js"></script>
+    <script src="order.js"></script>
+  </body>
+</html>
